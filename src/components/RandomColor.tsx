@@ -8,13 +8,14 @@ interface Color {
 }
 
 
+
 const RandomColor = () => {
-  const [color, setColor] = useState<Color[]>([]);
+  const [color, setColor] = useState<Color>({} as Color);
   const [updateColor, setUpdateColor] = useState(false);
   const [copySucess, setCopySucess] = useState('');
   const [isLoading, setIsLoading] = useState(true)
-  const textRef = useRef(null);
-  const colorRef = useRef(null);
+  const textRef = useRef<HTMLDivElement>(null);
+  const colorRef = useRef<HTMLDivElement>(null);
 
   console.log(color)
 
@@ -25,12 +26,16 @@ const RandomColor = () => {
   }
 
   function setStyle(color: string) {
-    colorRef.current.style.backgroundColor = color
+    if(colorRef.current) {
+      colorRef.current.style.backgroundColor = color
+    }
   }
 
   function copyToClipboard() {
-    navigator.clipboard.writeText(textRef.current.innerText) 
-
+    if(textRef.current){
+      navigator.clipboard.writeText(textRef.current.innerText) 
+    }
+  
     setCopySucess('Copied!')
   }
 

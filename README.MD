@@ -8,7 +8,7 @@
 </p>
 
 <h2 align="center">
-  <img alt="Random Colors" title="Listagem de Heróis" src="./src/img/random-colors-readme.gif" />
+  <img alt="Random Colors" title="Random Colors" src="./src/img/random-colors-readme.gif" />
 </h2>
 
 ## :four_leaf_clover: Tecnologias utilizadas
