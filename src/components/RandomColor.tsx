@@ -1,15 +1,22 @@
 import React, { useEffect, useState, useRef } from 'react'
 
-import copyIcon from '../img/copy-icon.svg'
+import copyImg from '../img/copy-icon.svg'
 import '../styles/randomcolor.scss'
 
+interface Color {
+  hex: string
+}
+
+
 const RandomColor = () => {
-  const [color, setColor] = useState([]);
+  const [color, setColor] = useState<Color[]>([]);
   const [updateColor, setUpdateColor] = useState(false);
   const [copySucess, setCopySucess] = useState('');
   const [isLoading, setIsLoading] = useState(true)
   const textRef = useRef(null);
   const colorRef = useRef(null);
+
+  console.log(color)
 
   document.body.onkeyup = function(e) {
     if(e.keyCode === 32){
@@ -22,7 +29,7 @@ const RandomColor = () => {
   }
 
   function copyToClipboard() {
-    navigator.clipboard.writeText(textRef.current.innerText)
+    navigator.clipboard.writeText(textRef.current.innerText) 
 
     setCopySucess('Copied!')
   }
@@ -57,7 +64,7 @@ const RandomColor = () => {
         <div className="rc-footer">
           <div className="rc-hex" ref={textRef}>{color.hex}</div>
           <div className="rc-copy" onClick={copyToClipboard}>
-            <img src={copyIcon} alt="Color"/>
+            <img src={copyImg} alt="Color"/>
           </div>
         </div>
         <span className={`rc-copy-sucess ${copySucess && 'show'}`} >{copySucess}</span>
